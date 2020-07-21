@@ -1,9 +1,9 @@
-﻿namespace Morpeh.Unity.Tests.Runtime {
+﻿namespace Morpeh.TestSuite.Runtime {
     using System.Collections;
     using NUnit.Framework;
+    using Unity.Tests.Runtime.Variables;
     using UnityEngine;
     using UnityEngine.TestTools;
-    using Variables;
 
     [TestFixture]
     public class VariableTests {

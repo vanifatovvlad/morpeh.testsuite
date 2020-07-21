@@ -1,32 +1,32 @@
-﻿namespace Morpeh.Unity.Tests.Editor {
+﻿namespace Morpeh.TestSuite.Editor {
     using NUnit.Framework;
 
     [TestFixture(Category = "Morpeh/World")]
     public class WorldTests {
-        protected World World;
+        private World world;
 
         [SetUp]
-        public void Setup() => this.World = World.Create();
+        public void Setup() => this.world = World.Create();
 
         [TearDown]
         public void TearDown() {
-            this.World.Dispose();
-            this.World = null;
+            this.world.Dispose();
+            this.world = null;
         }
 
         [Test]
         public void World_Entities_Capacity_Is_Same_As_Const_Capacity_By_Default() {
-            Assert.AreEqual(this.World.entitiesCapacity, Constants.DEFAULT_WORLD_ENTITIES_CAPACITY);
+            Assert.AreEqual(this.world.entitiesCapacity, Constants.DEFAULT_WORLD_ENTITIES_CAPACITY);
         }
 
         [Test]
         public void World_Entities_Length_Is_Same_As_Capacity_By_Default() {
-            Assert.AreEqual(this.World.entitiesCapacity, this.World.entities.Length);
+            Assert.AreEqual(this.world.entitiesCapacity, this.world.entities.Length);
         }
 
         [Test]
         public void World_Entities_Public_Length_Is_Zero_By_Default() {
-            Assert.AreEqual(this.World.entitiesLength, 0);
+            Assert.AreEqual(this.world.entitiesLength, 0);
         }
 
         [Test]
@@ -36,10 +36,10 @@
         [TestCase(1234)]
         public void World_Entities_Public_Length_Is_Grow_Right(int countEntities) {
             for (int i = 0, length = countEntities; i < length; i++) {
-                this.World.CreateEntity();
+                this.world.CreateEntity();
             }
 
-            Assert.AreEqual(this.World.entitiesLength, countEntities);
+            Assert.AreEqual(this.world.entitiesLength, countEntities);
         }
 
         [Test]
@@ -47,11 +47,11 @@
         [TestCase(Constants.DEFAULT_WORLD_ENTITIES_CAPACITY * 2 + 1, Constants.DEFAULT_WORLD_ENTITIES_CAPACITY * 2 * 2)]
         public void World_Entities_Capacity_Is_Grow_Right(int countEntities, int expected) {
             for (int i = 0, length = countEntities; i < length; i++) {
-                this.World.CreateEntity();
+                this.world.CreateEntity();
             }
 
-            Assert.AreEqual(this.World.entities.Length, expected);
-            Assert.AreEqual(this.World.entitiesCapacity, expected);
+            Assert.AreEqual(this.world.entities.Length, expected);
+            Assert.AreEqual(this.world.entitiesCapacity, expected);
         }
     }
 }
