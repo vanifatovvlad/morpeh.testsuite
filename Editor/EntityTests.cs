@@ -93,13 +93,14 @@
             
             Assert.False(has);
         }
-        
+
         [Test]
         public void Entity_RemoveComponent_Delete_Last_Component_Force_Delete_Entity_From_World() {
             var entity = this.world.CreateEntity();
 
             entity.AddComponent<TestComponent>();
             entity.RemoveComponent<TestComponent>();
+            this.world.UpdateFilters();
 
             Assert.True(entity.isDisposed);
         }
