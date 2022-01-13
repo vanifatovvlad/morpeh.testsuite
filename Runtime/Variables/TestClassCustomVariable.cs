@@ -7,7 +7,7 @@
     public class TestClassCustomVariable : BaseGlobalVariable<DummyClass> {
         public override DataWrapper Wrapper { get; set; }
 
-        protected override DummyClass Load(string serializedData) {
+        public override DummyClass Deserialize(string serializedData) {
             if (!string.IsNullOrEmpty(serializedData)) {
                 if (this.value != null) {
                     JsonUtility.FromJsonOverwrite(serializedData, this.value);
@@ -18,9 +18,7 @@
             }
             return this.value;
         }
-        protected override string Save() => JsonUtility.ToJson(this.value);
-        
-        public override string LastToString() => this.BatchedChanges.Peek().ToString();
+        public override string Serialize(DummyClass data) => JsonUtility.ToJson(this.value);
     }
 
     [Serializable]

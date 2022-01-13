@@ -7,11 +7,9 @@
     public class TestStructCustomVariable : BaseGlobalVariable<DummyStruct> {
         public override DataWrapper Wrapper { get; set; }
 
-        protected override DummyStruct Load(string serializedData) => JsonUtility.FromJson<DummyStruct>(serializedData);
+        public override DummyStruct Deserialize(string serializedData) => JsonUtility.FromJson<DummyStruct>(serializedData);
         
-        protected override string Save() => JsonUtility.ToJson(this.value);
-        
-        public override string LastToString() => this.BatchedChanges.Peek().ToString();
+        public override string Serialize(DummyStruct data) => JsonUtility.ToJson(data);
     }
 
     [Serializable]
