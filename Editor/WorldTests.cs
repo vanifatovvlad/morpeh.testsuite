@@ -39,19 +39,19 @@
                 this.world.CreateEntity();
             }
 
-            Assert.AreEqual(this.world.entitiesLength, countEntities);
+            Assert.AreEqual(countEntities, this.world.entitiesLength);
         }
 
         [Test]
-        [TestCase(Constants.DEFAULT_WORLD_ENTITIES_CAPACITY + 1, Constants.DEFAULT_WORLD_ENTITIES_CAPACITY * 2)]
-        [TestCase(Constants.DEFAULT_WORLD_ENTITIES_CAPACITY * 2 + 1, Constants.DEFAULT_WORLD_ENTITIES_CAPACITY * 2 * 2)]
+        [TestCase(129, 256)]
+        [TestCase(257, 1_024)]
+        [TestCase(1_025, 4_096)]
         public void World_Entities_Capacity_Is_Grow_Right(int countEntities, int expected) {
             for (int i = 0, length = countEntities; i < length; i++) {
                 this.world.CreateEntity();
             }
-
-            Assert.AreEqual(this.world.entities.Length, expected);
-            Assert.AreEqual(this.world.entitiesCapacity, expected);
+            
+            Assert.AreEqual(expected, this.world.entitiesCapacity);
         }
     }
 }
