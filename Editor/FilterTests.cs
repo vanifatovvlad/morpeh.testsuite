@@ -24,7 +24,7 @@
             this.world.RemoveEntity(entity);
             this.world.UpdateFilters();
 
-            Assert.Zero(filter.Length);
+            Assert.IsTrue(filter.IsEmpty());
         }
     }
 }
