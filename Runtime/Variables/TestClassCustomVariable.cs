@@ -1,4 +1,6 @@
-﻿namespace Morpeh.Unity.Tests.Runtime.Variables {
+﻿#if MORPEH_GLOBALS
+
+namespace Morpeh.Unity.Tests.Runtime.Variables {
     using System;
     using Globals;
     using UnityEngine;
@@ -28,3 +30,5 @@
         public int csharp;
     }
 }
+
+#endif

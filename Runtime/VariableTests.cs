@@ -1,4 +1,6 @@
-﻿namespace Morpeh.TestSuite.Runtime {
+﻿#if MORPEH_GLOBALS
+
+namespace Morpeh.TestSuite.Runtime {
     using System.Collections;
     using NUnit.Framework;
     using Unity.Tests.Runtime.Variables;
@@ -95,3 +97,5 @@
         }
     }
 }
+
+#endif
